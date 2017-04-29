@@ -1,62 +1,70 @@
-// VARIABLES
+// variables
 var wins = 0;
-var currentWord;
-var guessesRemaining = 10;
-var lettersGuessed = [];
-var lettersMatched = [];
+
+var losses = 0;
+
+var wordBank = ['litterbox', 'catnip', 'meow', 'mouse', 'purr', 'treats', 'pounce', 'claws', 'naps'];
+
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
 var letters;
+
+var guessesRemaining = 10;
+
+var displayWord = "";
+
+var lettersGuessed = [];
+
+var lettersMatched = [];
+
 var correctGuesses = 0;
 
-// array of possible words to guess
-var word = ['hamilton', 'chicago', 'wicked', 'cabaret', 'hairspray', 'cats', 'annie', 'rent'];
-
-// array of allowed keys 
-var charAllowed = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
-// Start new game by getting new word
+//begin game with new random word
 getWord();
-// Update the HTML
-updateHTML();
+updateLetters();
 
-// FUNCTIONS
 
-// Create the word and split up letters into an array
-function getWord() {
-	// Randomly select word from array of words
-	currentWord = word[Math.floor(Math.random() * word.length)];
-	// Split word into letters into an array
-	letters = currentWord.split('');
+// BEGIN GAME
+// choose random word from work bank
+function getWord () {
+
+	var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+	// 	split up the characters in the word into a new array
+	letters = chosenWord.split('');
 }
 
-// Update HTML
-function updateHTML() {
-	// Build html string
-	var html =	"<p>wins: " + wins +
-				"</p><p>current word: " +
-				"<br><br>";
-	
+
+// GAME LOGIC
+// update the html
+function updateLetters () {
+	// begin html string
+	var html =	"<p>WINS : " + wins + "</p>" +
+					"<p>CURRENT WORD<br>";					
 	// Loop through letters array and see if letters have been guessed
-	for (var i = 0; i < letters.length; i++){
-		// if letter isn't undefined, it's a match
-		if (lettersMatched[i] !== undefined){
+	for (i = 0; i < letters.length; i++){
+	// if letter isn't undefined, it's a match
+		if (lettersMatched[i]!== undefined){
 			// add match to html string and add space after letter
-			html += lettersMatched[i] + " ";	
-		} else {
-			// if it's not a match, add the dash instead
-			html += "- ";
-		}		
-	}
-	
+			html += lettersMatched[i] + " ";
+		}
+			else {
+				// if it's not a match, add the dash instead
+				html += "_ ";
+			}		
+		}	
+		
 	// Close paragraph tag
 	html += "</p>";
-	// Continue building html string, add remaining guesses
-	html += "<p>guesses remaining: " + guessesRemaining + "</p><p>letters guessed: ";
+	// add html, remaining guesses
+	html += "<p>GUESSES REMAINING : " + guessesRemaining + "</p>" +
+			"<p>LETTERS GUESSED :<br>";
+			
 	// loop through letters guessed array
 	for (i = 0; i < lettersGuessed.length; i++){
 		if (i > 0){
-			// list out letters guessed, separated by a comma
-			html += ", " + lettersGuessed[i];
-		} else {
+		//list out letters guessed, with comma
+		html += "," + lettersGuessed[i];
+			} else {
 			// list out letters guessed, separated by a space
 			html += lettersGuessed[i];
 		}
@@ -68,7 +76,7 @@ function updateHTML() {
 	document.querySelector("#game").innerHTML = html;
 }
 
-// Game Complete, reset vars
+// reset game
 function resetGame() {
 	// refresh number of guesses
 	guessesRemaining = 10;
@@ -82,16 +90,6 @@ function resetGame() {
 	getWord();
 }
 
-// Handle Loss
-function youLose() {
-	// Build html
-	var html =	"<p>wins: " + wins + "</p>";
-	html += "<p>current word: " + currentWord + "</p>";
-	html += "<p>guesses remaining: " + guessesRemaining + "</p>";
-	html += "<p>letters guessed: " + lettersGuessed + "</p>";
-
-	document.querySelector("#game").innerHTML = html;
-}
 
 // Listen for key up event
 document.onkeyup = function(event) {
@@ -100,15 +98,15 @@ document.onkeyup = function(event) {
 	// Set var for allowed key match
 	var allowed = 0;
 	// loop through all allowed characters
-	for (var i = 0; i < charAllowed.length; i++){
+	for (var i = 0; i < alphabet.length; i++){
 		// look for match against users key
-		if (userGuess === charAllowed[i]) {
+		if (userGuess === alphabet[i]) {
 			// track match 
 			allowed++;
 		}
 	}
 	
-	// Cheeck to see if user has remaining guessing and that the key pressed was allowed
+	// Check to see if user has remaining guessing and that the key pressed was allowed
 	if (guessesRemaining > 0 && allowed > 0){
 		// set var to track if letters has already been guessed
 		var guessed = 0;
@@ -141,8 +139,6 @@ document.onkeyup = function(event) {
 				}
 			}
 			
-			console.log(lettersMatched)
-			
 			// check if the number of correct guesses equals the number of letters in current word
 			if (correctGuesses === letters.length){
 				// increment the number of wins
@@ -159,15 +155,12 @@ document.onkeyup = function(event) {
 			
 			// check if there are any guess left
 			if (guessesRemaining === 0 ){
-				// if no guesses left trigger end of game
-				youLose();
+				// if no guesses left, up the losses andtrigger end of game
+				resetGame();
 			} else {
 				// otherwise, update the HTML
-				updateHTML();
+				updateLetters();
 			}
 		}
 	}
 }
-
-
-
