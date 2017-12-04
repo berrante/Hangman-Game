@@ -9,4 +9,5 @@ A classic hangman-style game, for cat people. =^..^=
 * Javascript
 
 
-## Gameplay Screenshots
+## Gameplay
+![landing](https://imgur.com/T42e62l)
