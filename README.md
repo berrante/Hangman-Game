@@ -9,4 +9,4 @@ A classic hangman-style game, for cat people. =^..^=
 * Javascript
 
 
-## Screenshots
+## Gameplay Screenshots
