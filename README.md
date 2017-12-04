@@ -1,7 +1,8 @@
 # Hangman-Game
 ## Description
  
-A classic hangman-style game, for cat people. **=^..^=**
+A classic hangman-style game, for cat people. 
+**=^..^=**
 
 
 ## Technologies Used
