@@ -3,4 +3,8 @@
  
 A classic hangman-style game, for cat people.
 
-## Installation
+## Technologies Used
+* HTML/CSS
+* Javascript
+
+### Screenshots
