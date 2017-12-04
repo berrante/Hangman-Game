@@ -1,2 +1,3 @@
 # Hangman-Game
-Homework #3
+ **Description**
+A classic hangman-style game, for cat people.
