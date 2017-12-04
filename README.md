@@ -16,7 +16,7 @@ Game begins with the following default parameters:
 * Randomly generated **Current Word**
 * **Guesses Remaining**: 10
 * **Letters Guessed**: blank
-![image](https://i.imgur.com/T42e62l.png)
+![landing](https://i.imgur.com/T42e62l.png)
 
 As letters are guessed, the following occurs:
 * They are added to the **Letter Guessed** list
@@ -24,3 +24,4 @@ As letters are guessed, the following occurs:
    * It gets filled in on the **Current Word**. No guesses are deducted.
 * If the letter is **NOT** a correct guess,
    * 1 guess is deducted.
+![guessed](https://i.imgur.com/1g3DSWW.png)
