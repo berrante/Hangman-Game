@@ -1,4 +1,6 @@
 # Hangman-Game
- **Description**
+## Description
  
 A classic hangman-style game, for cat people.
+
+## Installation
