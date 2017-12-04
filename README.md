@@ -10,4 +10,4 @@ A classic hangman-style game, for cat people. =^..^=
 
 
 ## Gameplay
-![image](https://imgur.com/T42e62l)
+![image](https://i.imgur.com/T42e62l.png)
