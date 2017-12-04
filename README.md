@@ -25,3 +25,12 @@ As letters are guessed, the following occurs:
 * If the letter is **NOT** a correct guess,
    * 1 guess is deducted.
 ![guessed](https://i.imgur.com/1g3DSWW.png)
+
+If a player **wins**:
+* **Wins** counter goes up by 1
+* Game resets to defaults
+![win](https://i.imgur.com/hb55NM3.png)
+
+If a player **loses**:
+* **Wins** counter remains the same
+* Game resets to defaults
